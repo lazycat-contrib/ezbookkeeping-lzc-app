@@ -1,0 +1,14 @@
+version: "3"
+services:
+  ezbookkeeping:
+    image: mayswind/ezbookkeeping
+    container_name: ezbookkeeping
+    ports:
+      - "8080:8080"
+    volumes:
+          - "/lzcapp/var:/ezbookkeeping/data"
+          - "/var/lib/ezbookkeeping/storage:/ezbookkeeping/storage" # 请确保 UID:GID 是 1000:1000
+          - "/var/log/ezbookkeeping:/ezbookkeeping/log" # 请确保 UID:GID 是 1000:1000 
+    environment:
+      - DB_TYPE=sqlite    # 显式指定使用 SQLite
+    restart: unless-stopped
