@@ -19,6 +19,7 @@ services:
             - EBK_DATABASE_DB_TYPE=sqlite3
             - EBK_DATABASE_DB_PATH=/ezbookkeeping/data/ezbookkeeping.db
             - EBK_SERVER_DOMAIN=${LAZYCAT_APP_DOMAIN}
+            - EBK_SERVER_ROOT_URL=https://${LAZYCAT_APP_DOMAIN}
             - EBK_SERVER_ENABLE_GZIP=true
             - EBK_LOG_MODE=file
             - EBK_SECURITY_SECRET_KEY={{stable_secret "palmr#encryption_key" | substr 0 32}}
