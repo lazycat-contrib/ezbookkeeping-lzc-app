@@ -1,32 +1,33 @@
-lzc-sdk-version: "0.1"
 name: ezBookkeeping
 package: cloud.lazycat.app.ezbookkeeping
-version: 0.0.1
+version: 0.1.0
+min_os_version: 1.3.8
 description: 一个自托管 (self-hosted) 的轻量个人账本应用。
 homepage: https://github.com/mayswind/ezbookkeeping
-author: czyt
+author: mayswind
 application:
-  subdomain: ezbookkeeping
-  background_task: true
-  multi_instance: false
-  gpu_accel: false
-  kvm_accel: false
-  usb_accel: false
-  public_path:
-    - /
-  routes:
-    - /=http://ezbookkeeping.cloud.lazycat.app.ezbookkeeping.lzcapp:8080/
+    subdomain: ezbookkeeping
+    background_task: true
+    public_path:
+        - /
+    routes:
+        - /=http://ezbookkeeping:8080/
 services:
-  ezbookkeeping:
-    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:335789578ad4f9e6
-    environment:
-      - DB_TYPE=sqlite
-    binds:
-      - /lzcapp/var/data:/ezbookkeeping/data
-      - /lzcapp/var/storage:/ezbookkeeping/storage
-      - /lzcapp/var/log:/ezbookkeeping/log
+    ezbookkeeping:
+        image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:e81fba9d7ccee378
+        environment:
+            - EBK_DATABASE_DB_TYPE=sqlite3
+            - EBK_DATABASE_DB_PATH=/ezbookkeeping/data/ezbookkeeping.db
+            - EBK_SERVER_DOMAIN=${LAZYCAT_APP_DOMAIN}
+            - EBK_SERVER_ENABLE_GZIP=true
+            - EBK_LOG_MODE=file
+            - EBK_SECURITY_SECRET_KEY={{stable_secret "palmr#encryption_key" | substr 0 32}}
+        binds:
+            - /lzcapp/var/data:/ezbookkeeping/data
+            - /lzcapp/var/storage:/ezbookkeeping/storage
+            - /lzcapp/var/log:/ezbookkeeping/log
 
-    setup_script: |     
-        chown 1000:1000 /lzcapp/var/data
-        chown 1000:1000 /lzcapp/var/storage
-        chown 1000:1000 /lzcapp/var/log
+        setup_script: |
+            chown 1000:1000 /lzcapp/var/data
+            chown 1000:1000 /lzcapp/var/storage
+            chown 1000:1000 /lzcapp/var/log
