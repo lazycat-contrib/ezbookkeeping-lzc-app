@@ -1,6 +1,6 @@
 name: ezBookkeeping
 package: cloud.lazycat.app.ezbookkeeping
-version: 1.2.0
+version: 1.3.0
 min_os_version: 1.3.8
 description: 一个自托管 (self-hosted) 的轻量个人账本应用。
 homepage: https://github.com/mayswind/ezbookkeeping
@@ -14,8 +14,8 @@ application:
     - /=http://ezbookkeeping:8080/
 services:
   ezbookkeeping:
-    # mayswind/ezbookkeeping:1.2.0
-    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:e83528304f79d2b8
+    # mayswind/ezbookkeeping:1.3.0
+    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:07ab7affef97f34f
     environment:
       - EBK_DATABASE_DB_TYPE=sqlite3
       - EBK_DATABASE_DB_PATH=/ezbookkeeping/data/ezbookkeeping.db
