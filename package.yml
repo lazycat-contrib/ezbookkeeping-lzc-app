@@ -1,0 +1,16 @@
+package: cloud.lazycat.app.ezbookkeeping
+version: 1.4.0
+name: ezBookkeeping
+description: 一个自托管 (self-hosted) 的轻量个人账本应用。
+min_os_version: 1.5.0
+homepage: https://github.com/mayswind/ezbookkeeping
+author: mayswind
+license: MIT
+
+locales:
+  zh:
+    name: "ezBookkeeping"
+    description: "一款轻量级、可自托管的个人财务应用程序，具有用户友好的界面和强大的记账功能。"
+  en:
+    name: "ezBookkeeping"
+    description: "A lightweight, self-hosted personal finance app with a user-friendly interface and powerful bookkeeping features."

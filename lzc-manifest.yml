@@ -1,21 +1,16 @@
-name: ezBookkeeping
-package: cloud.lazycat.app.ezbookkeeping
-version: 1.3.0
-min_os_version: 1.3.8
-description: 一个自托管 (self-hosted) 的轻量个人账本应用。
-homepage: https://github.com/mayswind/ezbookkeeping
-author: mayswind
 application:
   subdomain: ezbookkeeping
   background_task: true
   public_path:
     - /
-  routes:
-    - /=http://ezbookkeeping:8080/
+  upstreams:
+    - location: /
+      backend: http://ezbookkeeping:8080/
+
 services:
   ezbookkeeping:
-    # mayswind/ezbookkeeping:1.3.0
-    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:07ab7affef97f34f
+    # mayswind/ezbookkeeping:1.4.0
+    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:3c5a01541fab6e34
     environment:
       - EBK_DATABASE_DB_TYPE=sqlite3
       - EBK_DATABASE_DB_PATH=/ezbookkeeping/data/ezbookkeeping.db
@@ -28,16 +23,7 @@ services:
       - /lzcapp/var/data:/ezbookkeeping/data
       - /lzcapp/var/storage:/ezbookkeeping/storage
       - /lzcapp/var/log:/ezbookkeeping/log
-
     setup_script: |
       chown 1000:1000 /lzcapp/var/data
       chown 1000:1000 /lzcapp/var/storage
       chown 1000:1000 /lzcapp/var/log
-
-locales:
-  zh:
-    name: "ezBookkeeping"
-    description: "一款轻量级、可自托管的个人财务应用程序，具有用户友好的界面和强大的记账功能。"
-  en:
-    name: "ezBookkeeping"
-    description: "A lightweight, self-hosted personal finance app with a user-friendly interface and powerful bookkeeping features."
