@@ -9,8 +9,8 @@ application:
 
 services:
   ezbookkeeping:
-    # mayswind/ezbookkeeping:1.5.0
-    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:7993fb5335b342b6
+    # mayswind/ezbookkeeping:1.5.1
+    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:03d8910da6395f9e
     environment:
       - EBK_DATABASE_DB_TYPE=sqlite3
       - EBK_DATABASE_DB_PATH=/ezbookkeeping/data/ezbookkeeping.db
