@@ -6,11 +6,11 @@ application:
   upstreams:
     - location: /
       backend: http://ezbookkeeping:8080/
-
 services:
   ezbookkeeping:
     # mayswind/ezbookkeeping:1.5.1
-    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:03d8910da6395f9e
+    # upstream: docker.io/mayswind/ezbookkeeping:1.5.1
+    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:e42350c858161feb
     environment:
       - EBK_DATABASE_DB_TYPE=sqlite3
       - EBK_DATABASE_DB_PATH=/ezbookkeeping/data/ezbookkeeping.db
