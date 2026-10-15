@@ -9,8 +9,8 @@ application:
 services:
   ezbookkeeping:
     # mayswind/ezbookkeeping:1.5.1
-    # upstream: docker.io/mayswind/ezbookkeeping:2.0.1
-    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:3747f5ee895d49f0
+    # upstream: docker.io/mayswind/ezbookkeeping:2.1.0
+    image: registry.lazycat.cloud/czyt/mayswind/ezbookkeeping:a23dcb55b69f3ff5
     environment:
       - EBK_DATABASE_DB_TYPE=sqlite3
       - EBK_DATABASE_DB_PATH=/ezbookkeeping/data/ezbookkeeping.db
